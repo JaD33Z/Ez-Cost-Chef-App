@@ -8,14 +8,14 @@ from flask_admin.contrib.sqla import ModelView
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
-
+import os
 
 
 load_dotenv()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'SECRET_KEY'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///chef.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
