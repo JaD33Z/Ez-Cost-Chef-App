@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<style type="text/css">
+   body { background: #f4f9f9 !important; }
+</style>
+
+<div class="container" style="text-align:center;">
+<h1>Current Item Inventory</h1>
+</div>
+<br>
+
+<div class="container">
+    <div class="container">
+         <div class="col-lg-8 col-md-10 mx-auto content">
+
+              {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+           <p class="text-danger">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+
+             {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+    </div>
+</div>
+
+
+<div class="container" style="text-align:center;">
+
+    <h1>{{ results }}</h1>
+</div>
+<br>
+
+<div class="container" style="text-align:center;">
+ {% for content in contents %}
+   <h2><p>{{ content }}</p></h2>
+
+    {% endfor %}
+
+
+</div>
+
+<br>
+<div class="row" style="background-color:#a4ebf3;">
+
+<img src="{{ url_for('static', filename='img/chef.jpg')}}" class="img-responsive"  alt="Responsive image" style="width: 100%; height: 100%; opacity:0.5;">
+</div>
+
+{% include "footer.html" %}
+
+
+
+
+
+{% endblock %}

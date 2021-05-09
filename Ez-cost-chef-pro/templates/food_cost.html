@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<div class="container" style="text-align:center;">
+<h1>~ Food Item Cost Conversion ~</h1>
+</div>
+<br>
+
+<div class="container" style="text-align:center;">
+
+    <h1>{{ results }}</h1>
+</div>
+<br>
+<br>
+<div class="container" style="text-align:center;">
+
+    <h2>Would You Like To..?<h2>
+
+     <br>
+    <br>
+    <a href="{{ url_for('home') }}">
+        <h2>Add Another Item Into The System And Find It's Cost Per Ounce</h2></a>
+
+
+    <br>
+    <a href="{{ url_for('get_portion_size') }}">
+        <h2>Get An Individual Item's Food Cost and Menu Price By Serving Size</h2></a>
+
+
+
+    <br>
+    <a href="{{ url_for('create_dish') }}">
+        <h2>Build A Signature Dish For The Menu</h2></a>
+<br>
+
+    <a href="{{ url_for('get_menu_numbers') }}">
+        <h2>Calculate Your Entree's Total Food Cost And Suggested Menu Selling Price</h2></a>
+<br>
+
+</div>
+
+
+
+{% endblock %}

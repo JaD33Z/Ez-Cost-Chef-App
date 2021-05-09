@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<style type="text/css">
+       body { background: #f4f9f9 !important; }
+    </style>
+
+
+<div class="container" style="text-align:center;">
+<h1>Welcome To E-Z Chef~Cost Pro!</h1>
+</div>
+<br>
+
+<div class="container">
+    <h1>Register</h1>
+</div>
+
+<div class="container">
+     <div class="col-lg-8 col-md-10 mx-auto content">
+         {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+           <p class="text-danger">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+     </div>
+          {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+</div>
+
+<br>
+<div class="row" style="background-color:#a4ebf3;">
+
+<img src="{{ url_for('static', filename='img/chef.jpg')}}" class="img-responsive"  alt="Responsive image" style="width: 100%; height: 100%; opacity:0.5;">
+</div>
+
+{% include "footer.html" %}
+
+{% endblock %}

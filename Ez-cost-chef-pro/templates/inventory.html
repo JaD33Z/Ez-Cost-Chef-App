@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<div class="container" style="text-align:center;">
+<h1>~ Current Item Inventory ~</h1>
+    <h2>~ With Cost Per Ounce  ~</h2>
+</div>
+<br>
+
+<div class="container" style="text-align:center;">
+ {% for content in contents %}
+   <h2><p>{{ content }}</p></h2>
+
+    {% endfor %}
+
+
+</div>
+
+
+
+
+
+{% endblock %}
