@@ -140,7 +140,7 @@ def home():
         if not current_user.is_authenticated:
             flash("Only registered users may enter new items to inventory. "
                   "Visitors are welcome to experiment with "
-                  "pre-existing items on all other pages. "
+                  "pre-existing items on other pages. "
                   "Find item names in Dropdown box links.")
             return redirect(url_for('home'))
         bulk_cost = form.bulk_cost.data
@@ -223,6 +223,9 @@ def create_dish():
 def get_menu_numbers():
     form = MenuPrices()
     if form.validate_on_submit():
+        if not current_user.is_authenticated:
+            flash("Only registered users may enter new items into inventory.")
+            return redirect(url_for('get_menu_numbers'))
         qry_cost = MenuDish.query.with_entities\
             (func.sum(MenuDish.portion_cost))\
             .filter_by(dish_name=form.name.data).all()
