@@ -30,7 +30,7 @@ you wish to add to your dish. When you've added everything you want click on nex
 DISH COST AND SELLING PRICE PAGE: Enter the name of your newly created dish and it will return total food cost of 
 completed dish and it's menu price. Your dish, it's ingredients, cost and price will be entered into the database.
  
-VIEW INVENTORY OPTIONS - Dropdown Tab: At any time you can view what is currently in your system.
+VIEW INVENTORY OPTIONS: Dropdown Tab: At any time you can view what is currently in your system.
 
 MENU ITEMS: View a list of all Dish-Names currently on the Menu with their selling price.
 
@@ -43,18 +43,19 @@ REGISTRATION AND LOGIN PAGES: Users must register then can login and out.
 ADMIN: E-Z Chef also has an admin page to manage/modify/add/delete Users, and Inventory items in the database from a convenient backend GUI. Users' Passwords are hashed and salted so none are viewable even in the app's admin page. To access the admin interface you must enter through the browser by 127.0.0.1:5000/admin 
 * note - You must be registered and logged in first or attempting to enter admin will produce an error page.
 * App is currently configured so that only the registered user with "id = 1" in the database can fully access the admin interface.
-In main.py code is currently -
-
+In main.py code is currently:
+```python
 class MyModelView(ModelView):
-    def is_accessible(self):
-        if current_user.id == 1:
-            return True
-        else:
-            return False
-            
+  def is_accessible(self):
+    if current_user.id == 1:
+      return True
+    else:
+      return False
+   ```
 To change or extend admin access to other users you can simply modify this code above.
 For example:
 
+```python
 ADMIN_ID_LIST = [1,2,3,4,5]
 
 class MyModelView(ModelView):
@@ -63,18 +64,41 @@ class MyModelView(ModelView):
             return True
         else:
             return False
-
+ ```
 
 TO RUN APP: Clone repository, or download as zip file. Open folder in your prefered code editor or IDE. The file to run this app is main.py. In your browser go to 127.0.0.1:5000 and it will be running on local host.
 Or from terminal:
-$ cd Ez-cost-chef-pro               (navigate to app's current directory)
-$ python3 -m venv env               (create virtual environment for app)
-$ source env/bin/activate           (activate your virtual environment)
-$ pip install -r requirements.txt   (installs all of the required packages to run this app inside your virtual environment)
-$ python main.py                    (this command runs the app)
+Navigate to app's current directory:
 
-when app is running go to 127.0.0.1:5000 in your browser to view and interact with the app. 
-$ control c (to stop app's server from running on local host)
+```
+$ cd Ez-cost-chef-pro
+```
+
+Create virtual environment for app:
+
+```
+$ python3 -m venv env
+``` 
+
+Activate your virtual environment:
+```
+$ source env/bin/activate
+``` 
+
+Installs all of the required packages to run this app inside your virtual environment:
+```
+$ pip install -r requirements.txt
+```
+This command runs the app:
+```
+$ python main.py
+```                 
+**When app is running go to 127.0.0.1:5000 in your browser to view and interact with the app.**
+
+To stop app's server from running on local host:
+```
+$ control c
+``` 
 
 
 
