@@ -66,8 +66,10 @@ class MyModelView(ModelView):
             return False
  ```
 
-TO RUN APP: Clone repository, or download as zip file. Open folder in your prefered code editor or IDE. The file to run this app is main.py. In your browser go to 127.0.0.1:5000 and it will be running on local host.
-Or from terminal:
+**TO RUN APP: Clone repository, or download as zip file. Open folder in your prefered code editor or IDE. The file to run this app is main.py. In your browser go to 127.0.0.1:5000 and it will be running on local host.**
+
+*Or from terminal-*
+
 Navigate to app's current directory:
 
 ```
