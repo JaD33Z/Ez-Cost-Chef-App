@@ -40,5 +40,57 @@ RECIPES: Enter a Dish-Name and it returns the searched Dish along with a list of
 
 REGISTRATION AND LOGIN PAGES: Users must register then can login and out.
 
-ADMIN: E-Z Chef also has an admin page to manage Users, and Inventory items in the database from a convenient backend interface. Users' Passwords are hashed
-and salted so none are viewable even in the app's admin page.
+ADMIN: E-Z Chef also has an admin page to manage/modify/add/delete Users, and Inventory items in the database from a convenient backend GUI. Users' Passwords are hashed and salted so none are viewable even in the app's admin page. To access the admin interface you must enter through the browser by 127.0.0.1:5000/admin 
+* note - You must be registered and logged in first or attempting to enter admin will produce an error page.
+* App is currently configured so that only the registered user with "id = 1" in the database can fully access the admin interface.
+In main.py code is currently -
+
+class MyModelView(ModelView):
+    def is_accessible(self):
+        if current_user.id == 1:
+            return True
+        else:
+            return False
+            
+To change or extend admin access to other users you can simply modify this code above.
+For example:
+
+ADMIN_ID_LIST = [1,2,3,4,5]
+
+class MyModelView(ModelView):
+    def is_accessible(self):
+        if current_user.id in ADMIN_ID_LIST:
+            return True
+        else:
+            return False
+
+
+TO RUN APP: Clone repository, or download as zip file. Open folder in your prefered code editor or IDE. The file to run this app is main.py. In your browser go to 127.0.0.1:5000 and it will be running on local host.
+Or from terminal:
+$ cd Ez-cost-chef-pro               (navigate to app's current directory)
+$ python3 -m venv env               (create virtual environment for app)
+$ source env/bin/activate           (activate your virtual environment)
+$ pip install -r requirements.txt   (installs all of the required packages to run this app inside your virtual environment)
+$ python main.py                    (this command runs the app)
+
+when app is running go to 127.0.0.1:5000 in your browser to view and interact with the app. 
+$ control c (to stop app's server from running on local host)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
