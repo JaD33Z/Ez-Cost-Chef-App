@@ -219,7 +219,7 @@ def create_dish():
 ## Stores your created dish into database, returns the total food cost
 ## and suggested menu selling price for your completed dish.
 
-@app.route('/get_numbers.html', methods=["GET","POST"])
+@app.route('/get_numbers.html', methods=["GET", "POST"])
 def get_menu_numbers():
     form = MenuPrices()
     if form.validate_on_submit():
@@ -241,7 +241,7 @@ def get_menu_numbers():
                 food_cost=total_cost,
                 menu_price=menu_price,
             )
-            db.session.query(MenuNumbers.name).filter_by(name=new_numbers.name).delete()
+            db.session.query(MenuNumbers.name).filter_by(name=new_numbers.name)
             db.session.add(new_numbers)
             db.session.commit()
             results = f"Total food cost for this dish is ${total_cost} \n" \
@@ -257,7 +257,7 @@ def get_menu_numbers():
 
 @app.route('/data_content.html')
 def menu_items():
-    search_res = MenuNumbers.query.with_entities(MenuNumbers.name,MenuNumbers.menu_price).all()
+    search_res = MenuNumbers.query.with_entities(MenuNumbers.name, MenuNumbers.menu_price).all()
     names = [i[0] for i in search_res]
     nums = [float(i[1]) for i in search_res]
     contents = zip(names, nums)
@@ -294,4 +294,4 @@ def get_recipes():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
